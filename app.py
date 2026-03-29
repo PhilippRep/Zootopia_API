@@ -10,18 +10,17 @@ OLD_TEXT_IN_HTML = "__REPLACE_ANIMALS_INFO__"
 
 API_URL = "https://api.api-ninjas.com/v1/animals?name=Fox"
 
-headers = {
+HEADERS = {
     'X-Api-Key': f'{API_KEY}'
 }
 
-response = requests.get(API_URL, headers=headers)
-content = response.json()
-print (content)
 
 def load_data(file_path):
     """ Loads a JSON file """
-    with open(file_path, "r", encoding="utf-8") as handle:
-        return json.load(handle)
+    response = requests.get(API_URL, headers=HEADERS)
+    content = response.json()
+    return content
+
 
 def read_html():
     """read html file"""
