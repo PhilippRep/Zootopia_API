@@ -1,5 +1,3 @@
-import data_fetcher
-
 HTML_TEMPLATE_FILE = "animals_template.html"
 WEBSITE_HTML = "animals.html"
 OLD_TEXT_IN_HTML = "__REPLACE_ANIMALS_INFO__"
