@@ -1,5 +1,10 @@
 import requests
-from important.config import API_KEY
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+API_KEY = os.getenv("API_KEY")
 
 HEADERS = {
     'X-Api-Key': f'{API_KEY}'
