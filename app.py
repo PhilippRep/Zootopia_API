@@ -1,5 +1,7 @@
 """create a website with spezific input from a json-file"""
 import json
+from pickle import GLOBAL
+
 import requests
 from important.config import API_KEY
 
@@ -8,16 +10,21 @@ DATA_FILE = 'animals_data.json'
 WEBSITE_HTML = "animals.html"
 OLD_TEXT_IN_HTML = "__REPLACE_ANIMALS_INFO__"
 
-API_URL = "https://api.api-ninjas.com/v1/animals?name=Fox"
+API_URL = "https://api.api-ninjas.com/v1/animals?name="
 
 HEADERS = {
     'X-Api-Key': f'{API_KEY}'
 }
+def ask_for_animal_data(url):
+    """Get the standard url, ask user for an animal and returned new input as json"""
+    which_animal = input("Enter a name of an animal: ")
+    url += which_animal
+    return  url
 
 
-def load_data(file_path):
+def load_data(url):
     """ Loads a JSON file """
-    response = requests.get(API_URL, headers=HEADERS)
+    response = requests.get(ask_for_animal_data(url), headers=HEADERS)
     content = response.json()
     return content
 
@@ -74,7 +81,7 @@ def create_new_html_file(content):
 
 def main():
     """controlling of the Programm"""
-    animals_data = load_data(DATA_FILE)
+    animals_data = load_data(API_URL)
     get_information_from_animals(animals_data)
     read_html()
 
