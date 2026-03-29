@@ -22,7 +22,7 @@ venv/
 Thumbs.db
 
 # Backup folder
-back_up/
+important/
 
 # Logs
 *.log

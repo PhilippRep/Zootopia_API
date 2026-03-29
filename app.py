@@ -1,10 +1,22 @@
 """create a website with spezific input from a json-file"""
 import json
+import requests
+from important.config import API_KEY
 
 HTML_TEMPLATE_FILE = "animals_template.html"
 DATA_FILE = 'animals_data.json'
 WEBSITE_HTML = "animals.html"
 OLD_TEXT_IN_HTML = "__REPLACE_ANIMALS_INFO__"
+
+API_URL = "https://api.api-ninjas.com/v1/animals?name=Fox"
+
+headers = {
+    'X-Api-Key': f'{API_KEY}'
+}
+
+response = requests.get(API_URL, headers=headers)
+content = response.json()
+print (content)
 
 def load_data(file_path):
     """ Loads a JSON file """
